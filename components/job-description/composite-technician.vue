@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2 class="font-semibold mb-2 text-xl">Your job is to manufacture composite parts for boats, large drones, aerospace
+    <h2 class="font-semibold mb-6 text-xl">Your job is to manufacture composite parts for boats, large drones, aerospace
       parts, and automotive parts.</h2>
-    <h2 class="font-semibold mb-2 text-xl">Experience</h2>
+    <h2 class="font-semibold mb-2 text-xl">Experience:</h2>
     <ul class="list-disc list-outside">
       <li>3 years experience in composites manufacturing proccess in wet lamination and/or pre-preg, including carbon
         fibre and fibreglass.</li>

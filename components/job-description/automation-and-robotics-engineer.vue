@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="font-semibold mb-2 text-xl">Expert in robotics to fully automatize and connect our robots to the ERP
+    <h2 class="font-semibold mb-6 text-xl">Expert in robotics to fully automatize and connect our robots to the ERP
       production system.</h2>
 
     <h2 class="font-semibold mb-2 text-xl">Experience and skills:</h2>
