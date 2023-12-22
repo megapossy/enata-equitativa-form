@@ -14,21 +14,31 @@
       </ClientOnly>
     </div>
     <div
-      class="container p-2 sm:p-12 -mt-36 mx-auto min-h-screen flex justify-center items-center relative"
+      class="container p-2 sm:p-12 -mt-36 mx-auto min-h-screen flex justify-center items-start relative"
     >
       <ClientOnly>
         <BaseFadeUp>
           <div
-            class="grid grid-cols-1 lg:grid-cols-2 w-full relative bg-white shadow-md shadow-gray-400/40 rounded-md"
+            class="grid grid-cols-1 lg:grid-cols-1 w-full relative bg-white shadow-md shadow-gray-400/40 rounded-md"
           >
             <JobDescription />
 
-            <Form />
+            <button
+              type="button"
+              @click="isShown = true"
+              class="text-lg font-medium rounded-lg p-4 text-white bg-blue-600 border my-12 hover:bg-blue-800 mx-auto min-w-72"
+            >
+              Apply
+            </button>
           </div>
         </BaseFadeUp>
       </ClientOnly>
     </div>
+
+    <FormModal v-model:show="isShown" />
   </section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const isShown = ref(false);
+</script>

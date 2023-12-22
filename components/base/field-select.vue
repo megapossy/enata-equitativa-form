@@ -73,6 +73,12 @@ const emits = defineEmits<{
 }>();
 
 const selected = ref<DataType>();
+
+if (props.modelValue) {
+  const fnd = props.data.find((el) => el.value === props.modelValue);
+  selected.value = fnd;
+}
+
 const searchRef = ref<HTMLInputElement>();
 const searchText = ref("");
 const isSelectBoxShown = ref(false);

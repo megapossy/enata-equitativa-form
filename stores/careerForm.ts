@@ -13,7 +13,7 @@ export const useCareerFormStore = defineStore({
     resume:"",
     title:"",
     salary: "",
-    position: "",
+    position: "cncoperator",
     aboutSelf: "",
    }),
   actions: {
@@ -27,7 +27,7 @@ export const useCareerFormStore = defineStore({
       this.resume = "";
       this.title = "";
       this.salary = "";
-      this.position = "";
+      this.position = "cncoperator";
       this.aboutSelf = "";
     }
   }

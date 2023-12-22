@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8 py-12">
+  <div class="">
     <h2 class="font-bold mx-auto text-xl mt-12 lg:mt-0 mb-4 text-center">
       Submit your Candidacy
     </h2>
@@ -184,14 +184,14 @@
           >
         </label>
       </div>
-
+      <!-- 
       <button
         :disabled="!iAcknowledgeAgree"
         type="button"
         class="text-white bg-primary border mt-6 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem] disabled:bg-primary/50 disabled:hover:bg-primary/50 disabled:hover:text-white disabled:hover:border-white/50 disabled:hover:font-normal"
       >
         Submit
-      </button>
+      </button> -->
     </form>
   </div>
 </template>
