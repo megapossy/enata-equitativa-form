@@ -1,5 +1,5 @@
 <template>
-  <div class="p-6 lg:p-8 lg:py-12">
+  <div class="p-6 md:px-10 lg:px-16 lg:py-12">
     <div>
       <!-- <h2 class="mx-auto text-center font-medium text-2xl">Job Openings</h2> -->
 
