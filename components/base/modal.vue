@@ -45,7 +45,7 @@
               </button>
             </div>
             <!-- Modal body -->
-            <div class="modal-body p-4 md:p-5 max-h-[80svh] overflow-y-auto me-1">
+            <div class="modal-body p-4 md:p-5 max-h-[65svh] overflow-y-auto me-1">
               <slot />
             </div>
             <!-- Modal footer -->
