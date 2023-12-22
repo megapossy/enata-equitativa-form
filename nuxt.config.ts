@@ -11,6 +11,10 @@ export default defineNuxtConfig({
   modules:[
     "nuxt-tawing-supabase",
     "nuxt-svgo",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    
+
   ],
   svgo: {
     autoImportPath: false,

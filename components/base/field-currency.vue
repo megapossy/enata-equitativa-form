@@ -28,11 +28,11 @@
           </svg>
         </div>
         <input
+          v-model="numberInput"
           type="number"
           id="currency-input"
           class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-e-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
           placeholder="Enter amount"
-          required
         />
       </div>
       <button
@@ -42,40 +42,32 @@
         class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-e-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
         type="button"
       >
-        USD
-        <svg
-          class="w-2.5 h-2.5 ms-2.5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
+        {{ selectedCurrency }}
+        <SVGchevrondown class="ms-2 mt-1 me-0" />
       </button>
       <BaseFadeUp>
         <div
           id="dropdown-currency"
-          class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-md border w-36 absolute top-[calc(100%+10px)]"
+          class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-md border w-36 absolute top-[calc(100%+10px)] right-0"
           v-show="isSelectBoxShown"
         >
           <ul
-            class="py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-select"
+            class="py-2 text-sm text-gray-700 dropdown-select"
             aria-labelledby="dropdown-currency-button"
           >
-            <li v-for="i in 5">
+            <li v-for="curr in currencies">
               <button
+                @click="
+                  () => {
+                    selectedCurrency = curr;
+                    isSelectBoxShown = false;
+                  }
+                "
                 type="button"
                 class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
-                <div class="inline-flex items-center">USD</div>
+                <div class="inline-flex items-center">{{ curr }}</div>
               </button>
             </li>
           </ul>
@@ -86,8 +78,23 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ name: string; label: string }>();
+import SVGchevrondown from "@/assets/icons/app/chevron-down.svg";
+const props = defineProps<{ name: string; label: string; modelValue: string }>();
 const isSelectBoxShown = ref(false);
+
+const selectedCurrency = ref("USD");
+const numberInput = ref("");
+const currencies = ["USD", "EUR", "AED"];
+
+const emits = defineEmits<{
+  (e: "update:modelValue", v: string): void;
+}>();
+
+watchEffect(() => {
+  if (selectedCurrency.value && numberInput.value) {
+    emits("update:modelValue", `${selectedCurrency.value}-${numberInput.value}`);
+  }
+});
 </script>
 
 <style></style>
