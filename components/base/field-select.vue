@@ -85,6 +85,16 @@ const filteredData = computed(() => {
     return props.data;
   }
 });
+
+watch(
+  () => props.modelValue,
+  (nVal) => {
+    if (nVal) {
+      const fnd = props.data.find((el) => el.value === nVal);
+      selected.value = fnd;
+    }
+  }
+);
 </script>
 
 <style></style>

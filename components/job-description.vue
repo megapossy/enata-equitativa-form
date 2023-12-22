@@ -76,6 +76,10 @@ const isSelectBoxShown = ref(false);
 const selectComponent = (data: CompType) => {
   isSelectBoxShown.value = false;
   selected.value = data;
+
+  if (data.code) {
+    csf.position = data.code;
+  }
 };
 
 const csf = useCareerFormStore();
