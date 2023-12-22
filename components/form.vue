@@ -1,16 +1,38 @@
 <template>
   <div class="p-8 py-12">
-    <h2 class="font-bold mx-auto text-xl mb-4 text-center">Submit your Candidacy</h2>
+    <h2 class="font-bold mx-auto text-xl mt-12 lg:mt-0 mb-4 text-center">
+      Submit your Candidacy
+    </h2>
     <hr
       class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-6 dark:bg-gray-700"
     />
     <p>We do not seem to know about you.</p>
     <p class="mb-6">If you wish to join us, please tell us know about you:</p>
     <form>
-      <fieldset class="mb-6">
-        <label class="block mb-2 font-medium text-gray-500">Title</label>
-        <div class="flex items-center mb-4">
+      <div class="mb-6 max-w-[70%]">
+        <BaseFieldSelect
+          v-model="csf.position"
+          name="position"
+          label="Position *"
+          :data="[
+            { name: 'CNC Operator', value: 'cncoperator' },
+            { name: 'Composite Technician', value: 'compositetechnician' },
+            {
+              name: 'Automation and RoboticsEngineer',
+              value: 'automationandroboticsengineer',
+            },
+          ]"
+        />
+      </div>
+
+      <fieldset class="mb-4">
+        <label
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600"
+          >Title *</label
+        >
+        <div class="flex items-center mb-1">
           <input
+            v-model="csf.title"
             id="mr"
             type="radio"
             name="title"
@@ -23,6 +45,7 @@
           </label>
 
           <input
+            v-model="csf.title"
             id="miss"
             type="radio"
             name="title"
@@ -35,6 +58,7 @@
           </label>
 
           <input
+            v-model="csf.title"
             id="mrs"
             type="radio"
             name="title"
@@ -50,25 +74,55 @@
 
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-          <BaseField name="first_name" type="text" label="First Name" />
+          <BaseField
+            v-model="csf.firstName"
+            name="first_name"
+            type="text"
+            label="First Name *"
+          />
         </div>
         <div>
-          <BaseField name="last_name" type="text" label="Last Name" />
+          <BaseField
+            v-model="csf.lastName"
+            name="last_name"
+            type="text"
+            label="Last Name *"
+          />
         </div>
         <div class="">
-          <BaseFieldPhone class="" name="phone" type="text" label="Phone number" />
+          <BaseFieldPhone
+            v-model="csf.mobile"
+            class=""
+            name="phone"
+            type="text"
+            label="Phone number *"
+          />
         </div>
         <div>
-          <BaseFieldIcon name="email" type="text" label="Email Address">
+          <BaseFieldIcon
+            v-model="csf.email"
+            name="email"
+            type="text"
+            label="Email Address *"
+          >
             <SVGatsign class="w-4 h-4 text-gray-500" />
           </BaseFieldIcon>
         </div>
         <div class="">
-          <BaseFieldNationality class="" name="nationality" label="Nationality" />
+          <BaseFieldNationality
+            v-model="csf.nationality"
+            class=""
+            name="nationality"
+            label="Nationality *"
+          />
         </div>
 
         <div class="">
-          <BaseFieldCurrency name="salary" label="Expected Monthly Salary" />
+          <BaseFieldCurrency
+            v-model="csf.salary"
+            name="salary"
+            label="Expected Monthly Salary"
+          />
         </div>
       </div>
 
@@ -77,7 +131,7 @@
       </div>
 
       <div class="col-span-full mb-6">
-        <BaseFieldFile />
+        <BaseFieldFileSimple label="Upload Resume *" />
       </div>
 
       <div class="mb-6">
@@ -88,6 +142,7 @@
         >
         <textarea
           id="message"
+          v-model="csf.aboutSelf"
           rows="4"
           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
           placeholder=""
@@ -115,7 +170,12 @@
         </p>
 
         <label class="relative inline-flex items-center mb-6 cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" />
+          <input
+            v-model="iAcknowledgeAgree"
+            type="checkbox"
+            value=""
+            class="sr-only peer"
+          />
           <div
             class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
           ></div>
@@ -126,8 +186,9 @@
       </div>
 
       <button
-        type="submit"
-        class="text-white bg-primary border mt-6 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem]"
+        :disabled="!iAcknowledgeAgree"
+        type="button"
+        class="text-white bg-primary border mt-6 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem] disabled:bg-primary/50 disabled:hover:bg-primary/50 disabled:hover:text-white disabled:hover:border-white/50 disabled:hover:font-normal"
       >
         Submit
       </button>
@@ -140,39 +201,9 @@ import SVGmale from "@/assets/icons/app/gender-male.svg";
 import SVGfemale from "@/assets/icons/app/gender-female.svg";
 import SVGatsign from "@/assets/icons/app/at-sign.svg";
 
-// const isFormShown = ref(false);
-// onMounted(async () => {
-//   await helpers.huwaits(500)
-//   isFormShown.value = true
-// })
+const csf = useCareerFormStore();
+
+const iAcknowledgeAgree = ref(false);
 </script>
 
-<style lang="scss" scoped>
-// div:not(.animated)> {
-//   input:not([type="radio"]) {
-//     @apply bg-gray-50 border border-transparent text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-4 px-3;
-//   }
-
-//   label {
-//     @apply text-lg font-normal text-gray-900;
-//   }
-// }
-
-// div.animated> {
-// input:not([type="radio"]) {
-//   @apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600;
-// }
-
-// label {
-//   @apply absolute text-xl text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0];
-// }
-// }
-
-// input:not([type="radio"]) {
-//   @apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600;
-// }
-
-// label {
-//   @apply absolute text-xl text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0];
-// }
-</style>
+<style lang="scss" scoped></style>

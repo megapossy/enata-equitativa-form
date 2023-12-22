@@ -15,7 +15,7 @@
     <!-- <hr class="h-px my-8 w-1/2 mx-auto bg-gray-200 border-0 dark:bg-gray-700"> -->
     <!-- <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"> -->
 
-    <div class="px-4 lg:px-4">
+    <div>
       <div class="flex cursor-pointer relative mb-8">
         <h2 @click="isSelectBoxShown = !isSelectBoxShown" class="font-bold text-2xl flex">
           {{ selected.title }}
@@ -50,19 +50,51 @@ import AutomationAndRoboticsEngineer from "@/components/job-description/automati
 import SVGchevrondown from "@/assets/icons/app/chevron-down.svg";
 import SVGchevronup from "@/assets/icons/app/chevron-up.svg";
 
+type CompType = {
+  code: string;
+  title: string;
+  component: Component;
+};
+
 const comps = [
-  { title: "CNC Operator", component: CncOperator },
-  { title: "Composite Technician", component: CompositeTechnician },
-  { title: "Automation and RoboticsEngineer", component: AutomationAndRoboticsEngineer },
+  { code: "cncoperator", title: "CNC Operator", component: CncOperator },
+  {
+    code: "compositetechnician",
+    title: "Composite Technician",
+    component: CompositeTechnician,
+  },
+  {
+    code: "automationandroboticsengineer",
+    title: "Automation and RoboticsEngineer",
+    component: AutomationAndRoboticsEngineer,
+  },
 ];
 
-const selected = ref<{ title: string; component: Component }>(comps[0]);
+const selected = ref<CompType>(comps[0]);
 const isSelectBoxShown = ref(false);
 
-const selectComponent = (data: { title: string; component: Component }) => {
+const selectComponent = (data: CompType) => {
   isSelectBoxShown.value = false;
   selected.value = data;
+
+  if (data.code) {
+    csf.position = data.code;
+  }
 };
+
+const csf = useCareerFormStore();
+
+watch(
+  () => csf.position,
+  (nVal) => {
+    if (nVal) {
+      const sel = comps.find((el) => el.code === nVal);
+      if (sel) {
+        selected.value = sel;
+      }
+    }
+  }
+);
 </script>
 
 <style></style>
