@@ -1,25 +1,47 @@
 <template>
   <div class="p-8 py-12">
-    <!-- <h2 class="mx-auto text-3xl text-center">Job Openings</h2>
-    <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-6 dark:bg-gray-700"> -->
+    <h2 class="font-bold mx-auto text-xl mb-4 text-center">Submit your Candidacy</h2>
+    <hr
+      class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-6 dark:bg-gray-700"
+    />
+    <p>We do not seem to know about you.</p>
+    <p class="mb-6">If you wish to join us, please tell us know about you:</p>
     <form>
       <fieldset class="mb-6">
         <label class="block mb-2 font-medium text-gray-500">Title</label>
         <div class="flex items-center mb-4">
-          <input id="mr" type="radio" name="title" value="mr" class="w-4 h-4 border-gray-300 ">
-          <label for="mr" class="block ms-2 me-8 ">
+          <input
+            id="mr"
+            type="radio"
+            name="title"
+            value="mr"
+            class="w-4 h-4 border-gray-300"
+          />
+          <label for="mr" class="block ms-2 me-8">
             <SVGmale class="inline-block text-2xl" />
             Mr.
           </label>
 
-          <input id="miss" type="radio" name="title" value="miss" class="w-4 h-4 border-gray-300 ">
-          <label for="miss" class="block ms-2  me-8">
+          <input
+            id="miss"
+            type="radio"
+            name="title"
+            value="miss"
+            class="w-4 h-4 border-gray-300"
+          />
+          <label for="miss" class="block ms-2 me-8">
             <SVGfemale class="inline-block text-2xl" />
             Miss
           </label>
 
-          <input id="mrs" type="radio" name="title" value="mrs" class="w-4 h-4 border-gray-300 ">
-          <label for="mrs" class="block ms-2 ">
+          <input
+            id="mrs"
+            type="radio"
+            name="title"
+            value="mrs"
+            class="w-4 h-4 border-gray-300"
+          />
+          <label for="mrs" class="block ms-2">
             <SVGfemale class="inline-block text-2xl" />
             Mrs
           </label>
@@ -41,69 +63,89 @@
             <SVGatsign class="w-4 h-4 text-gray-500" />
           </BaseFieldIcon>
         </div>
-      </div>
-
-      <div class="flex items-start mb-6">
-        <div class="flex items-center h-5">
-          <input id="remember" type="checkbox" value=""
-            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300   -600 " required>
+        <div class="">
+          <BaseFieldNationality class="" name="nationality" label="Nationality" />
         </div>
-        <label for="remember" class="ms-2">I agree with the <a href="#" class="text-blue-600 hover:underline ">terms
-            and conditions</a>.</label>
+
+        <div class="">
+          <BaseFieldCurrency name="salary" label="Expected Monthly Salary" />
+        </div>
       </div>
 
       <div class="col-span-full mb-6">
-        <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover photo</label>
-        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-6">
-          <div class="text-center">
-            <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd"
-                d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                clip-rule="evenodd" />
-            </svg>
-            <div class="mt-4 flex text-sm leading-6 text-gray-600">
-              <label for="file-upload"
-                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600  hover:text-indigo-500">
-                <span>Upload a file</span>
-                <input id="file-upload" name="file-upload" type="file" class="sr-only">
-              </label>
-              <p class="pl-1">or drag and drop</p>
-            </div>
-            <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-          </div>
-        </div>
+        <BaseFieldPhoto />
       </div>
 
-      
-
-      <div>
-        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tell us more about yourself</label>
-        <textarea id="message" rows="4"
-          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder=""></textarea>
-
+      <div class="col-span-full mb-6">
+        <BaseFieldFile />
       </div>
-      
 
-      <button type="submit"
-        class="text-white bg-primary border mt-12 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem]">Submit</button>
+      <div class="mb-6">
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Tell us more about yourself</label
+        >
+        <textarea
+          id="message"
+          rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+          placeholder=""
+        ></textarea>
+      </div>
+
+      <div class="p-4 mb-2 text-sm text-blue-500 rounded-lg bg-blue-50" role="alert">
+        <p class="mb-3">
+          By proceeding, you are granting ENATA permission to process your personal data
+          in order to carry out background verification checks.
+        </p>
+        <p class="mb-3">
+          For full details of how we process your personal data, as well as an explanation
+          of your rights, please see our Data Protection Policy.
+        </p>
+
+        <p class="mb-3">
+          Please be aware that we may use the services of third parties and/or contact
+          identified third parties (such as academic institutions and former employers) to
+          verify the accuracy of any data and/or documents that you provide to us.
+        </p>
+
+        <p class="mb-6">
+          The results will be held on file in accordance with our data retention policy.
+        </p>
+
+        <label class="relative inline-flex items-center mb-6 cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer" />
+          <div
+            class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+          ></div>
+          <span class="ms-3 text-sm font-bold text-blue-800 dark:text-gray-300"
+            >I ACKNOWLEDGE AND AGREE</span
+          >
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="text-white bg-primary border mt-6 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem]"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import SVGmale from "@/assets/icons/app/gender-male.svg"
-import SVGfemale from "@/assets/icons/app/gender-female.svg"
-import SVGatsign from "@/assets/icons/app/at-sign.svg"
+import SVGmale from "@/assets/icons/app/gender-male.svg";
+import SVGfemale from "@/assets/icons/app/gender-female.svg";
+import SVGatsign from "@/assets/icons/app/at-sign.svg";
 
 // const isFormShown = ref(false);
 // onMounted(async () => {
 //   await helpers.huwaits(500)
 //   isFormShown.value = true
 // })
-
 </script>
-
 
 <style lang="scss" scoped>
 // div:not(.animated)> {
@@ -132,4 +174,5 @@ import SVGatsign from "@/assets/icons/app/at-sign.svg"
 
 // label {
 //   @apply absolute text-xl text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0];
-// }</style>
+// }
+</style>
