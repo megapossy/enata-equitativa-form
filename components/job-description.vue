@@ -1,23 +1,59 @@
 <template>
   <div class="p-6 lg:p-8 lg:py-12">
-    <!-- <h2 class="mx-auto text-center font-medium tesxt-2xl">Job Openings</h2> -->
-
-    <!-- <div class="flex justify-center items-center text-center my-4 space-x-4">
-      <h2 class="cursor-pointer">CNC Operator</h2>
-      <div class="h-2 w-2 bg-gray-200 rounded-full" />
-      <h2 class="font-extrabold cursor-default">Automation and Robotics Engineer</h2>
-      <div class="h-2 w-2 bg-gray-200 rounded-full" />
-      <h2 class="group transition duration-300 cursor-pointer ">
-        Composite Technician
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 mt-1 bg-gray-950"></span>
-      </h2>
-    </div> -->
-    <!-- <hr class="h-px my-8 w-1/2 mx-auto bg-gray-200 border-0 dark:bg-gray-700"> -->
-    <!-- <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"> -->
-
     <div>
-      <div class="flex cursor-pointer relative mb-8">
-        <h2 @click="isSelectBoxShown = !isSelectBoxShown" class="font-bold text-2xl flex">
+      <!-- <h2 class="mx-auto text-center font-medium text-2xl">Job Openings</h2> -->
+
+      <div
+        class="flex justify-center items-center flex-col sm:flex-row text-center my-4 space-y-3 sm:space-x-4 sm:space-y-0 text-xl positions"
+      >
+        <h2
+          class="group"
+          @click="selectComponent(comps[0])"
+          :class="{
+            selected: selected.code === comps[0].code,
+          }"
+        >
+          CNC Operator
+          <span
+            class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 mt-1 bg-gray-950"
+          ></span>
+        </h2>
+        <div class="h-2 w-2 hidden sm:block bg-gray-300 rounded-full" />
+        <h2
+          class="group"
+          @click="selectComponent(comps[1])"
+          :class="{
+            selected: selected.code === comps[1].code,
+          }"
+        >
+          Composite Technician
+          <span
+            class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 mt-1 bg-gray-950"
+          ></span>
+        </h2>
+        <div class="h-2 w-2 hidden sm:block bg-gray-300 rounded-full" />
+        <h2
+          class="group"
+          @click="selectComponent(comps[2])"
+          :class="{
+            selected: selected.code === comps[2].code,
+          }"
+        >
+          Automation and Robotics Engineer
+          <span
+            class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 mt-1 bg-gray-950"
+          ></span>
+        </h2>
+      </div>
+
+      <hr class="h-px my-14 mb-16 w-1/2 mx-auto bg-gray-200 border-0 dark:bg-gray-700" />
+      <!-- <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"> -->
+
+      <!-- <div class="flex cursor-pointer relative mb-8">
+        <h2
+          @click="isSelectBoxShown = !isSelectBoxShown"
+          class="font-bold text-2xl flex mx-auto"
+        >
           {{ selected.title }}
           <SVGchevronup v-show="isSelectBoxShown" class="ms-3 mt-1 me-0" />
           <SVGchevrondown v-show="!isSelectBoxShown" class="ms-3 mt-1 me-0" />
@@ -31,8 +67,10 @@
             {{ comp.title }}
           </h2>
         </div>
-      </div>
-
+      </div> -->
+      <!-- <hr
+        class="w-48 h-1 mx-auto my-8 bg-gray-200 border-0 rounded md:my-10 dark:bg-gray-700"
+      /> -->
       <BaseFadeUp>
         <component :is="selected.component" />
       </BaseFadeUp>
@@ -97,4 +135,14 @@ watch(
 );
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.positions {
+  h2:not(.selected) {
+    @apply font-bold cursor-pointer transition duration-300 opacity-40;
+  }
+
+  h2.selected {
+    @apply font-bold cursor-default;
+  }
+}
+</style>

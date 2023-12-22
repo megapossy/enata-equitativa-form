@@ -22,6 +22,7 @@
   "dependencies": {
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@pinia/nuxt": "^0.5.1",
+    "@vueuse/core": "^10.7.0",
     "nuxt-svgo": "^3.7.0",
     "nuxt-tawing-supabase": "^1.0.11",
     "pinia": "^2.1.7",

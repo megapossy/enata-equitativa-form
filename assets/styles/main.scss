@@ -31,3 +31,39 @@ ol:not(.dropdown-select) {
     @apply font-bold;
   }
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px ;
+}
+::-webkit-scrollbar:horizontal {
+  height: 10px ;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: theme("colors.white");
+}
+::-webkit-scrollbar-track:horizontal {
+  background: theme("colors.black");
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: theme("colors.black");
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  background: theme("colors.white");
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.black");
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover:horizontal {
+  background: theme("colors.white");
+}
