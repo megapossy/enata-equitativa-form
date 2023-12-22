@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2 class="font-semibold mb-2 text-xl">Expert in robotics to fully automatize and connect our robots to the ERP
+    <h2 class="font-semibold mb-6 text-lg">Expert in robotics to fully automatize and connect our robots to the ERP
       production system.</h2>
 
-    <h2 class="font-semibold mb-2 text-xl">Experience and skills:</h2>
+    <h2 class="font-semibold mb-2 text-lg">Experience and skills:</h2>
     <ul class="list-disc list-outside">
       <li>Minimum of 6 years experience in automation and industrial robots programming.</li>
       <li>Good Kuka robot knowledge, including KRC2 and KRC4 controllers operation.</li>
@@ -12,7 +12,7 @@
       <li>Optional: Knowlegde of Java programing.</li>
     </ul>
 
-    <h2 class="font-semibold mb-2 text-xl">Software and Systems knowledge required:</h2>
+    <h2 class="font-semibold mb-2 text-lg">Software and Systems knowledge required:</h2>
     <ul class="list-disc list-outside">
       <li>Powermill robot toolpath generation: advanced</li>
       <li>KRC 2/ KRC 4 Kuka controller knowledge: advanced</li>
@@ -20,7 +20,7 @@
     </ul>
 
 
-    <h2 class="font-semibold mb-2 text-xl">Duties:</h2>
+    <h2 class="font-semibold mb-2 text-lg">Duties:</h2>
     <ul class="list-disc list-outside">
       <li>Automation of composite parts production line including trimming and pick-and-place of fabric plies and
         hydraulic press.</li>

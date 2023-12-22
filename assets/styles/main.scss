@@ -15,16 +15,16 @@ html, body {
 }
 
 
-ul,
-ol {
+ul:not(.dropdown-select),
+ol:not(.dropdown-select) {
   @apply space-y-3 list-outside mb-8 ms-5 last:mb-1;
 }
 
-ul {
+ul:not(.dropdown-select) {
   @apply list-disc;
 }
 
-ol {
+ol:not(.dropdown-select) {
   @apply list-decimal;
 
   li::marker {

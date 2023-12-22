@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="font-semibold mb-2 text-xl">Mechanical Production duties:</h2>
+    <h2 class="font-semibold mb-2 text-lg">Mechanical Production duties:</h2>
     <ul class="list-disc list-outside">
       <li>Ensure that the CNC machines and machine room are clean, in proper state of operating at all times;</li>
       <li>Operate all CNC machines;</li>
