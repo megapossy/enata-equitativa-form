@@ -1,6 +1,8 @@
 <template>
-
-    <form class="p-8">
+  <div class="p-8 py-12">
+    <!-- <h2 class="mx-auto text-3xl text-center">Job Openings</h2>
+    <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-6 dark:bg-gray-700"> -->
+    <form>
       <fieldset class="mb-6">
         <label class="block mb-2 font-medium text-gray-500">Title</label>
         <div class="flex items-center mb-4">
@@ -24,7 +26,7 @@
         </div>
       </fieldset>
 
-      <div class="grid gap-8 mb-6 md:grid-cols-2">
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <BaseField name="first_name" type="text" label="First Name" />
         </div>
@@ -40,6 +42,7 @@
           </BaseFieldIcon>
         </div>
       </div>
+
       <div class="flex items-start mb-6">
         <div class="flex items-center h-5">
           <input id="remember" type="checkbox" value=""
@@ -49,9 +52,9 @@
             and conditions</a>.</label>
       </div>
 
-      <div class="col-span-full">
+      <div class="col-span-full mb-6">
         <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover photo</label>
-        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-6">
           <div class="text-center">
             <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd"
@@ -71,11 +74,21 @@
         </div>
       </div>
 
-      <button type="submit" class="text-white bg-primary border mt-12
-          hover:bg-white hover:text-black hover:font-bold hover:border-black
-            focus:ring-4 focus:outline-none focus:ring-black 
-            font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem]">Submit</button>
+      
+
+      <div>
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tell us more about yourself</label>
+        <textarea id="message" rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder=""></textarea>
+
+      </div>
+      
+
+      <button type="submit"
+        class="text-white bg-primary border mt-12 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem]">Submit</button>
     </form>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -119,5 +132,4 @@ import SVGatsign from "@/assets/icons/app/at-sign.svg"
 
 // label {
 //   @apply absolute text-xl text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0];
-// }
-</style>
+// }</style>
