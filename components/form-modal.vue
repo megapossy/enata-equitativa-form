@@ -7,7 +7,7 @@
     <template #title>
       <div class="flex flex-col items-center">
         <img
-          class="h-12 sm:h-18 bg-slate-500 rounded-md p-3 me-4"
+          class="h-12 sm:h-18 bg-slate-950 rounded-md p-3 mx-auto"
           src="/enata-logo-white.svg"
         />
       </div>
