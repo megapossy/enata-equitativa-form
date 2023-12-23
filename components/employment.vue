@@ -25,7 +25,7 @@
 
             <button
               type="button"
-              @click="isShown = true"
+              @click="isFormShown = true"
               class="text-lg font-medium rounded-lg p-4 text-white bg-blue-600 border my-12 hover:bg-blue-800 mx-auto min-w-72"
             >
               Apply
@@ -35,10 +35,19 @@
       </ClientOnly>
     </div>
 
-    <FormModal v-model:show="isShown" />
+    <ClientOnly>
+      <FormModal v-model:show="isFormShown" @form-submitted="formSubmitted()" />
+      <SuccessModal v-model:show="isSucessShown" />
+    </ClientOnly>
   </section>
 </template>
 
 <script lang="ts" setup>
-const isShown = ref(false);
+const isFormShown = ref(false);
+const isSucessShown = ref(false);
+
+const formSubmitted = () => {
+  isFormShown.value = false;
+  isSucessShown.value = true;
+};
 </script>

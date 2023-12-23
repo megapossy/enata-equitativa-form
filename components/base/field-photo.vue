@@ -25,20 +25,46 @@
             class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500"
           >
             <span>Upload a photo</span>
-            <input id="file-upload" name="file-upload" type="file" class="sr-only" />
+            <input
+              id="file-upload"
+              type="file"
+              class="sr-only"
+              ref="inputFileRef"
+              accept="image/png, image/jpeg"
+              @change="handleFile"
+            />
           </label>
           <p class="pl-1">or drag and drop</p>
         </div>
-        <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 5MB</p>
+        <p class="text-xs leading-5 text-gray-600">PNG, JPG up to 5MB</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const { upload } = useFileUpload();
+const cfs = useCareerFormStore();
+
 const props = defineProps<{
   label?: string;
 }>();
+
+const inputFileRef = ref<HTMLInputElement>();
+const isLoading = ref(false);
+const handleFile = async (event: Event) => {
+  if ((event.target as any).value && inputFileRef.value?.files?.length) {
+    try {
+      isLoading.value = true;
+      const file = inputFileRef.value?.files[0];
+      cfs.fields.resume = await upload(file.name, file);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+};
 </script>
 
 <style></style>

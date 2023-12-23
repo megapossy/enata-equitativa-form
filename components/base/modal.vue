@@ -8,23 +8,25 @@
         class="modal overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-screen"
       >
         <!-- Modal backdrop  -->
+        <!-- @click.self="close()" -->
         <div
-          @click.self="close()"
           class="modal-backdrop relative p-4 w-full h-full flex justify-center items-center bg-secondary/30"
         >
           <!-- Modal content -->
           <div
             ref="modalContent"
-            class="modal-content container mx-auto relative rounded-lg shadow-xl bg-white max-h-full"
+            class="modal-content container mx-auto relative rounded-lg shadow-xl bg-white max-h-[90%]"
             :class="[props.size]"
           >
             <!-- Modal header -->
-            <div class="modal-title flex items-center justify-between p-4 md:p-5">
+            <div
+              class="modal-title flex items-center justify-between p-4 md:p-5 border-b"
+            >
               <slot name="title" />
               <button
                 @click="close()"
                 type="button"
-                class="text-white bg-primary rounded-full text-sm w-10 h-10 ms-auto inline-flex justify-center items-center hover:bg-secondary hover:text-white"
+                class="text-white bg-primary rounded-full text-sm w-10 h-10 ms-auto inline-flex justify-center items-center hover:bg-secondary hover:text-white absolute top-4 right-4"
               >
                 <svg
                   class="w-3 h-3"
@@ -45,11 +47,11 @@
               </button>
             </div>
             <!-- Modal body -->
-            <div class="modal-body p-4 md:p-5 max-h-[65svh] overflow-y-auto me-1">
+            <div class="modal-body p-4 md:p-5 overflow-y-auto me-1 max-h-[60vh]">
               <slot />
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer flex items-center p-4 md:p-5">
+            <div class="modal-footer flex items-center">
               <slot name="footer" />
             </div>
           </div>
@@ -63,9 +65,9 @@
 import { onClickOutside } from "@vueuse/core";
 
 const modalContent = ref<HTMLElement>();
-onClickOutside(modalContent, (event) => {
-  close();
-});
+// onClickOutside(modalContent, (event) => {
+//   close();
+// });
 
 const emits = defineEmits<{
   (e: "update:show", v: boolean): void;
@@ -84,6 +86,16 @@ const props = defineProps({
 const close = () => {
   emits("update:show", false);
 };
+
+useHead({
+  bodyAttrs: {
+    class: computed(() => (props.show ? "no-scrollbar" : "")),
+  },
+});
 </script>
 
-<style scoped></style>
+<style>
+.no-scrollbar {
+  @apply overflow-y-hidden;
+}
+</style>
