@@ -82,9 +82,9 @@ import SVGchevrondown from "@/assets/icons/app/chevron-down.svg";
 const props = defineProps<{ name: string; label: string; modelValue: string }>();
 const isSelectBoxShown = ref(false);
 
-const selectedCurrency = ref("USD");
+const selectedCurrency = ref("AED");
 const numberInput = ref("");
-const currencies = ["USD", "EUR", "AED"];
+const currencies = ["AED", "USD", "EUR"];
 
 const emits = defineEmits<{
   (e: "update:modelValue", v: string): void;

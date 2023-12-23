@@ -14,7 +14,14 @@ const isEmailAddress = (email: string) => {
   else return false;
 };
 
+
+const getRandomInt = (max:number) => {
+  return Math.floor(Math.random() * max);
+}
+
+
 export default {
   huwaits,
   isEmailAddress,
+  getRandomInt
 };

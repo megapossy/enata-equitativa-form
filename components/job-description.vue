@@ -1,8 +1,6 @@
 <template>
   <div class="p-6 md:px-10 lg:px-16 lg:py-12">
     <div>
-      <!-- <h2 class="mx-auto text-center font-medium text-2xl">Job Openings</h2> -->
-
       <div
         class="flex justify-center items-center flex-col sm:flex-row text-center my-4 space-y-3 sm:space-x-4 sm:space-y-0 text-xl positions"
       >
@@ -47,30 +45,7 @@
       </div>
 
       <hr class="h-px my-14 mb-16 w-1/2 mx-auto bg-gray-200 border-0 dark:bg-gray-700" />
-      <!-- <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"> -->
 
-      <!-- <div class="flex cursor-pointer relative mb-8">
-        <h2
-          @click="isSelectBoxShown = !isSelectBoxShown"
-          class="font-bold text-2xl flex mx-auto"
-        >
-          {{ selected.title }}
-          <SVGchevronup v-show="isSelectBoxShown" class="ms-3 mt-1 me-0" />
-          <SVGchevrondown v-show="!isSelectBoxShown" class="ms-3 mt-1 me-0" />
-        </h2>
-
-        <div
-          v-show="isSelectBoxShown"
-          class="flex flex-col absolute top-[calc(100%+10px)] space-y-3 border bg-white p-4 px-6 shadow-md rounded-md"
-        >
-          <h2 v-for="(comp, i) in comps" @click="selectComponent(comp)">
-            {{ comp.title }}
-          </h2>
-        </div>
-      </div> -->
-      <!-- <hr
-        class="w-48 h-1 mx-auto my-8 bg-gray-200 border-0 rounded md:my-10 dark:bg-gray-700"
-      /> -->
       <BaseFadeUp>
         <component :is="selected.component" />
       </BaseFadeUp>
@@ -116,14 +91,14 @@ const selectComponent = (data: CompType) => {
   selected.value = data;
 
   if (data.code) {
-    csf.position = data.code;
+    cfs.fields.job_position = data.code;
   }
 };
 
-const csf = useCareerFormStore();
+const cfs = useCareerFormStore();
 
 watch(
-  () => csf.position,
+  () => cfs.fields.job_position,
   (nVal) => {
     if (nVal) {
       const sel = comps.find((el) => el.code === nVal);

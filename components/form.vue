@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <h2 class="font-bold mx-auto text-xl mt-12 lg:mt-0 mb-4 text-center">
+    <h2 class="font-bold mx-auto text-xl mt-4 lg:mt-4 mb-4 text-center">
       Submit your Candidacy
     </h2>
     <hr
@@ -11,9 +11,9 @@
     <form>
       <div class="mb-6 max-w-[70%]">
         <BaseFieldSelect
-          v-model="csf.position"
+          v-model="cfs.fields.job_position"
           name="position"
-          label="Position *"
+          label="Position"
           :data="[
             { name: 'CNC Operator', value: 'cncoperator' },
             { name: 'Composite Technician', value: 'compositetechnician' },
@@ -32,7 +32,8 @@
         >
         <div class="flex items-center mb-1">
           <input
-            v-model="csf.title"
+            v-model="cfs.fields.title"
+            @input="cfs.errors.title = ''"
             id="mr"
             type="radio"
             name="title"
@@ -45,7 +46,7 @@
           </label>
 
           <input
-            v-model="csf.title"
+            v-model="cfs.fields.title"
             id="miss"
             type="radio"
             name="title"
@@ -58,7 +59,7 @@
           </label>
 
           <input
-            v-model="csf.title"
+            v-model="cfs.fields.title"
             id="mrs"
             type="radio"
             name="title"
@@ -70,68 +71,89 @@
             Mrs
           </label>
         </div>
+        <FormError :message="cfs.errors.title" />
       </fieldset>
 
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <BaseField
-            v-model="csf.firstName"
+            v-model="cfs.fields.firstName"
+            @update:model-value="cfs.errors.firstName = ''"
             name="first_name"
             type="text"
             label="First Name *"
           />
+          <FormError :message="cfs.errors.firstName" />
         </div>
         <div>
           <BaseField
-            v-model="csf.lastName"
+            v-model="cfs.fields.lastName"
+            @update:model-value="cfs.errors.lastName = ''"
             name="last_name"
             type="text"
             label="Last Name *"
           />
+          <FormError :message="cfs.errors.lastName" />
         </div>
         <div class="">
           <BaseFieldPhone
-            v-model="csf.mobile"
+            v-model="cfs.fields.mobile"
+            @update:model-value="cfs.errors.mobile = ''"
             class=""
             name="phone"
             type="text"
             label="Phone number *"
           />
+          <FormError :message="cfs.errors.mobile" />
         </div>
         <div>
           <BaseFieldIcon
-            v-model="csf.email"
+            v-model="cfs.fields.email"
+            @update:model-value="cfs.errors.email = ''"
             name="email"
             type="text"
             label="Email Address *"
           >
             <SVGatsign class="w-4 h-4 text-gray-500" />
           </BaseFieldIcon>
+          <FormError :message="cfs.errors.email" />
         </div>
         <div class="">
           <BaseFieldNationality
-            v-model="csf.nationality"
+            v-model="cfs.fields.nationality"
+            @update:model-value="cfs.errors.nationality = ''"
             class=""
             name="nationality"
             label="Nationality *"
           />
+          <FormError :message="cfs.errors.nationality" />
         </div>
 
         <div class="">
           <BaseFieldCurrency
-            v-model="csf.salary"
+            v-model="cfs.fields.salary"
             name="salary"
             label="Expected Monthly Salary"
           />
         </div>
-      </div>
 
-      <div class="col-span-full mb-6">
-        <BaseFieldPhoto />
-      </div>
+        <div class="">
+          <BaseFieldFileSimple
+            v-model="cfs.fields.photo"
+            file-type="photo"
+            label="Upload Photo"
+          />
+        </div>
 
-      <div class="col-span-full mb-6">
-        <BaseFieldFileSimple label="Upload Resume *" />
+        <div class="">
+          <BaseFieldFileSimple
+            v-model="cfs.fields.resume"
+            @error="cfs.errors.resume = $event"
+            file-type="doc"
+            label="Upload Resume *"
+          />
+          <FormError :message="cfs.errors.resume" />
+        </div>
       </div>
 
       <div class="mb-6">
@@ -142,7 +164,7 @@
         >
         <textarea
           id="message"
-          v-model="csf.aboutSelf"
+          v-model="cfs.fields.aboutSelf"
           rows="4"
           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
           placeholder=""
@@ -171,7 +193,7 @@
 
         <label class="relative inline-flex items-center mb-6 cursor-pointer">
           <input
-            v-model="iAcknowledgeAgree"
+            v-model="cfs.fields.acknowledge"
             type="checkbox"
             value=""
             class="sr-only peer"
@@ -201,7 +223,7 @@ import SVGmale from "@/assets/icons/app/gender-male.svg";
 import SVGfemale from "@/assets/icons/app/gender-female.svg";
 import SVGatsign from "@/assets/icons/app/at-sign.svg";
 
-const csf = useCareerFormStore();
+const cfs = useCareerFormStore();
 
 const iAcknowledgeAgree = ref(false);
 </script>
