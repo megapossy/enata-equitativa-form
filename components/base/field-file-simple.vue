@@ -65,6 +65,7 @@ const handleFile = async (event: Event) => {
       emits("error", "");
       try {
         isLoading.value = true;
+        // const fType =
         const fileName = await upload(file.name, file);
         emits("update:modelValue", fileName);
       } catch (err) {
