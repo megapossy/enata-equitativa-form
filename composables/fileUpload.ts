@@ -18,7 +18,7 @@ export const useFileUpload = () => {
 
       let formData = new FormData();
       formData.append("file", file);
-      const data = new Blob([file], { type: "image/jpeg" });
+      const data = new Blob([file]);
       const { error } = await useFetch(url.value as string, {
         method: "put",
         headers: {
