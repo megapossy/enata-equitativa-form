@@ -25,7 +25,7 @@
       <div>
         <div
           v-show="!isLoading"
-          class="cursor-pointer mt-1 me-1 me-3 -mt-[45px] text-sm bg-red-600 text-white rounded-full w-5 h-5 flex justify-center items-center hover:bg-red-800"
+          class="cursor-pointer me-3 -mt-[45px] text-sm bg-red-600 text-white rounded-full w-5 h-5 flex justify-center items-center hover:bg-red-800"
           @click="clear()"
         >
           <SVGclear class="relative top-[1px]" />
