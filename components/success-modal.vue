@@ -14,7 +14,7 @@
     </template>
 
     <div class="flex flex-col justify-center items-center">
-      <h1 class="text-6xl my-4">THANK YOU!</h1>
+      <h1 class="text-5xl font-medium sm:text-6xl my-4 text-center">THANK YOU!</h1>
       <SVGcheck class="text-green-500 text-8xl" />
       <p class="text-center px-8 py-4 mb-6">
         Thanks a bunch for filling that out. It means a lot to us, just like you do! We
