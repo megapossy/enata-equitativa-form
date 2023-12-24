@@ -89,9 +89,6 @@ export const useCareerFormStore = defineStore({
 
     async submitForm() {
 
-      // simple validation form
-
-
       const payload = {
         first_name: this.fields.firstName,
         last_name: this.fields.lastName,

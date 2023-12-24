@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const useFileUpload = () => {
   const upload = async (filePath: string, file: File): Promise<string> => {
     try {
