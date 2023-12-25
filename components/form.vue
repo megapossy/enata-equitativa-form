@@ -47,6 +47,7 @@
 
           <input
             v-model="cfs.fields.title"
+            @input="cfs.errors.title = ''"
             id="miss"
             type="radio"
             name="title"
@@ -60,6 +61,7 @@
 
           <input
             v-model="cfs.fields.title"
+            @input="cfs.errors.title = ''"
             id="mrs"
             type="radio"
             name="title"
