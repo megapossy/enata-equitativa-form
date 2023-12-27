@@ -13,7 +13,7 @@
       >{{ props.label }}</label
     >
     <input
-      type="text"
+      :type="props.type || 'text'"
       :value="props.modelValue"
       @input="atInput"
       :id="props.name"

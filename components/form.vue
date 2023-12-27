@@ -113,7 +113,7 @@
             v-model="cfs.fields.email"
             @update:model-value="cfs.errors.email = ''"
             name="email"
-            type="text"
+            type="email"
             label="Email Address *"
           >
             <SVGatsign class="w-4 h-4 text-gray-500" />
@@ -226,8 +226,6 @@ import SVGfemale from "@/assets/icons/app/gender-female.svg";
 import SVGatsign from "@/assets/icons/app/at-sign.svg";
 
 const cfs = useCareerFormStore();
-
-const iAcknowledgeAgree = ref(false);
 </script>
 
 <style lang="scss" scoped></style>
