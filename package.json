@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "test:unit": "vitest --config ./vitest.config.ts",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "autoprefixer": "^10.4.16",
+    "jsdom": "^23.0.1",
     "nuxt": "^3.8.2",
     "postcss": "^8.4.32",
     "sass": "^1.69.5",
@@ -24,11 +26,13 @@
     "@aws-sdk/s3-request-presigner": "^3.478.0",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@pinia/nuxt": "^0.5.1",
+    "@vue/test-utils": "^2.4.3",
     "@vueuse/core": "^10.7.0",
     "axios": "^1.6.2",
     "nuxt-svgo": "^3.7.0",
     "nuxt-tawing-supabase": "^1.0.11",
     "pinia": "^2.1.7",
-    "validate.js": "^0.13.1"
+    "validate.js": "^0.13.1",
+    "vitest": "^1.1.0"
   }
 }
