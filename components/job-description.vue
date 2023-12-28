@@ -60,8 +60,8 @@ import CncOperator from "@/components/job-description/cnc-operator.vue";
 import CompositeTechnician from "@/components/job-description/composite-technician.vue";
 import AutomationAndRoboticsEngineer from "@/components/job-description/automation-and-robotics-engineer.vue";
 
-import SVGchevrondown from "@/assets/icons/app/chevron-down.svg";
-import SVGchevronup from "@/assets/icons/app/chevron-up.svg";
+// import SVGchevrondown from "@/assets/icons/app/chevron-down.svg";
+// import SVGchevronup from "@/assets/icons/app/chevron-up.svg";
 
 type CompType = {
   code: string;
