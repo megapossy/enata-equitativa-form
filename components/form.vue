@@ -118,7 +118,7 @@
           >
             <SVGatsign class="w-4 h-4 text-gray-500" />
           </BaseFieldIcon>
-          <FormError :message="cfs.errors.email" />
+          <FormError data-testid="email-error" :message="cfs.errors.email" />
         </div>
         <div class="">
           <BaseFieldNationality
@@ -208,19 +208,11 @@
           >
         </label>
       </div>
-      <!-- 
-      <button
-        :disabled="!iAcknowledgeAgree"
-        type="button"
-        class="text-white bg-primary border mt-6 hover:bg-white hover:text-black hover:font-bold hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center min-w-[10rem] disabled:bg-primary/50 disabled:hover:bg-primary/50 disabled:hover:text-white disabled:hover:border-white/50 disabled:hover:font-normal"
-      >
-        Submit
-      </button> -->
     </form>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import SVGmale from "@/assets/icons/app/gender-male.svg";
 import SVGfemale from "@/assets/icons/app/gender-female.svg";
 import SVGatsign from "@/assets/icons/app/at-sign.svg";

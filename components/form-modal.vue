@@ -22,6 +22,7 @@
     <template #footer>
       <div class="p-4 md:p-5 mt-0 border-t w-full">
         <button
+          data-testid="submit-form"
           :disabled="!cfs.fields.acknowledge || isLoading"
           @click="submit()"
           type="button"
@@ -38,7 +39,7 @@
   </BaseModal>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 const cfs = useCareerFormStore();
 const props = defineProps<{ show: boolean }>();
 const emits = defineEmits<{
