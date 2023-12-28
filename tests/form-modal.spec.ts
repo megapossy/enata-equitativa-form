@@ -10,9 +10,7 @@ import helpers from "@/utils/helpers";
 
 import { useCareerFormStore } from "@/stores/careerForm";
 
-helpers.huwaits = async (time = 300) => {
-  await Promise.resolve();
-};
+helpers.huwaits = vi.fn();
 
 
 const setCsfStore = () => {
@@ -163,9 +161,8 @@ describe("Form", () => {
     const csf = setCsfStore();
     csf.fields.acknowledge = true;
     await flushPromises();
-    await wrapper.find('button[data-testid="submit-form"]').trigger("click");
+    await wrapper.find('button[data-testqqid="submit-form"]').trigger("click");
     await flushPromises();
-
     expect(wrapper.emitted()["form-submitted"]).toHaveLength(1);
   });
 });
